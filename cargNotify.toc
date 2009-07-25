@@ -1,0 +1,12 @@
+## Interface: 30200
+## Title: cargNotify
+## Author: Cargor
+## Version: 0.1
+## X-eMail: xconstruct@gmail.com
+## X-Website: http://www.xconstruct.net
+## X-Credits: 
+## Notes: Notifications.
+
+core.lua
+xp.lua
+mail.lua
