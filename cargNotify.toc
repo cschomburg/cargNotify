@@ -6,7 +6,10 @@
 ## X-Website: http://www.xconstruct.net
 ## X-Credits: 
 ## Notes: Notifications.
+## SavedVariables: cargKarma
 
 core.lua
 xp.lua
 mail.lua
+karma.lua
+wintergrasp.lua

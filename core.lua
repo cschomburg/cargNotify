@@ -17,6 +17,10 @@ function AddNotification(...) cargNotify:AddNotification(...) end
 notify = AddNotification
 
 function cargNotify:CreateNotification(title, description, percent, additional)
+	if(type(title) == "table") then
+		additional, title, description, percent = title, additional.title, additional.description, additional.percent
+	end
+
 	local name = additional and additional.name
 	local frame = name and shown[name] or self:FetchFrame(name)
 	frame:SetTitle(title)
