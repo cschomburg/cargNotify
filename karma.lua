@@ -29,7 +29,7 @@ SlashCmdList["CARGKARMA_BAD"] = function(msg) doKarma("ff0000", msg or "has bad 
 SLASH_CARGKARMA_GOOD1 = "/good"
 SLASH_CARGKARMA_BAD1 = "/bad"
 
-LibStub("LibCargEvents-1.0").RegisterEvent("cargGank", "PLAYER_TARGET_CHANGED", function()
+LibStub("LibCargEvents-1.0").RegisterEvent("cargKarma", "PLAYER_TARGET_CHANGED", function()
 	cargKarma = cargKarma or {}
 	local name = getName()
 	if(not name or not cargKarma[name] or thisSession[name]) then return end
@@ -38,4 +38,12 @@ LibStub("LibCargEvents-1.0").RegisterEvent("cargGank", "PLAYER_TARGET_CHANGED", 
 	karmaNote.description = cargKarma[name]
 	AddNotification(karmaNote)
 	thisSession[name] = true
+end)
+
+ChatFrame_AddMessageEventFilter("CHAT_MSG_SYSTEM", function(self, event, msg, ...)
+	local name = msg:match("|Hplayer:(.-)|h")
+	if(name and cargKarma[name]) then
+		msg = ("%s - %s"):format(msg, cargKarma[name])
+	end
+	return false, msg, ...
 end)
